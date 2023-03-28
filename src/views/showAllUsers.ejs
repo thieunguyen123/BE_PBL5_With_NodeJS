@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GetAllCRUD</title>
+    <style>
+        table, th, td {
+          border: 1px solid black;
+          border-collapse: collapse;
+        
+        }
+
+        .btn-edit  {
+          outline: none;
+          border: none;
+          background: yellow;
+          border-radius: 7px;
+          height: 25px;
+          width: 60px;
+          margin: 5px;
+          cursor: pointer;
+          display: inline-block;
+          text-align: center;
+          }
+
+        .btn-delete {
+          outline: none;
+          border: none;
+          height: 25px;
+          width: 60px;
+          margin: 5px;
+          background: orange;
+          border-radius: 7px;
+          cursor: pointer;
+          display: inline-block;
+          text-align: center;
+        }
+       
+        </style>
+</head>
+<body>
+        <form action="" >
+            <table >
+               
+                    <tr  style=" width : 100%; height: 100px; background-color: aquamarine;" >
+                        <th>id</th>
+                        <th>FirstName</th>
+                        <th>LastName</th>
+                        <th>email</th>
+                        <th>password</th>
+                        <th>address</th>
+                        <th>Gender</th>
+                        <th>roleId</th>
+                        <th>phoneNumber</th>
+                        <th>createdAt</th>
+                        <th>updatedAt</th>
+                        <th>Action</th>
+                      </tr>
+               
+              
+          
+                     
+                <% for(let i=0; i < dataTable.length; i++) { %>
+                  <tr>
+                     <td><%= dataTable[i].id %></td>
+                      <td><%= dataTable[i].firstName %></td>
+                      <td><%= dataTable[i].lastName %></td>
+                      <td><%= dataTable[i].email %></td>
+                      <td><%= dataTable[i].password %></td>
+                      <td><%= dataTable[i].address %></td>
+                      <td><%= dataTable[i].gender %></td>
+                      <td><%= dataTable[i].roleId %></td> 
+                      <td><%= dataTable[i].phoneNumber %></td> 
+                      <td><%= dataTable[i].createdAt %></td> 
+                      <td><%= dataTable[i].updatedAt %> </td>
+              
+                    
+                   
+                      <td>
+                        <a href="/edit-crud?id=<%=dataTable[i].id %>" class="btn-edit" type="button" >Edit</a>
+                        <a href="/delete-crud?id=<%=dataTable[i].id %>" class="btn-delete" type="button">Delete</a>
+                      </td>
+                      
+                    </tr>
+                 <% } %>
+              </table>
+        </form>
+</body>
+</html>
