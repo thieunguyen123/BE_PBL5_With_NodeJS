@@ -20,20 +20,35 @@ let handleLogin= async (req,res)=> {
         {
           errCode : userData.errCode,
           message : userData.message,
-          userData: userData
+          user: userData.user ? userData.user : {}
         }
     )
 }
 
 
 
-  
-let check = (req, res) => {
-    res.status(200).json('kashdjf')
+let handleGetUsers = async (req,res)=> {
+
+    let id = req.query.id;
+    if (!id) {
+        return res.status(200).json({
+            errCode : 1,
+            message : 'missed id',
+            users
+        })
+    }
+    let users = await userServices.handleGetUsers(id)
+
+    return res.status(200).json({
+        errCode : 0,
+        message : 'oke',
+        users
+    })
+
 }
 
 
 module.exports = {
     handleLogin: handleLogin,
-    check: check
+    handleGetUsers : handleGetUsers,
 }

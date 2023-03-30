@@ -15,9 +15,10 @@ let initWebRoutes = (app) =>
     router.post('/put-crud',homeController.putEditCRUD);
     router.get('/delete-crud', homeController.deleteCRUD);
     router.post('/api/login', userController.handleLogin);
-    router.get('/check', userController.check)
+    router.get ('/api/getAllUsers',userController.handleGetUsers);
+
     return app.use("/" , router)
 
   
 }
-module.exports = initWebRoutes;
+module.exports = initWebRoutes; 
