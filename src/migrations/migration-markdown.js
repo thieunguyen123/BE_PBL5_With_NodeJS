@@ -2,7 +2,7 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('bookings', {
+    await queryInterface.createTable('markdowns', {
       // User.init({
       //   id: DataTypes.STRING,
       //   firstName: DataTypes.STRING,
@@ -12,29 +12,37 @@ module.exports = {
       //   gender : DataTypes.BOOLEAN,
       //   roleId : DataTypes.STRING,
       // },
+
+   
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      statusId: {
-        type: Sequelize.STRING
+      contentHTML: {
+        allowNull: false,
+        type: Sequelize.TEXT('long'),
+      },
+      contentMarkdown: {
+        allowNull: false,
+        type: Sequelize.TEXT('long'),
+      },
+      description: {
+        allowNull: false,
+        type: Sequelize.TEXT('long'),
       },
       doctorId: {
-        type: Sequelize.STRING
+        allowNull: true,
+        type: Sequelize.INTEGER
       },
-      patientId: {
-        type: Sequelize.STRING
+      specialtyId: {
+        allowNull: true,
+        type: Sequelize.INTEGER
       },
-      date: {
-        type: Sequelize.STRING
-      },
-      timeType: {
-        type: Sequelize.STRING
-      },
-      token : {
-        type :Sequelize.STRING
+      clinicId: {
+        allowNull: true,
+        type: Sequelize.INTEGER
       },
     
       createdAt: {
@@ -48,6 +56,6 @@ module.exports = {
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('bookings');
+    await queryInterface.dropTable('markdowns');
   }
 };

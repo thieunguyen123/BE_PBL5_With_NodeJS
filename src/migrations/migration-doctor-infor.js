@@ -2,7 +2,7 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable("clinics", {
+    await queryInterface.createTable("doctorInfor", {
       // User.init({
       //   id: DataTypes.STRING,
       //   firstName: DataTypes.STRING,
@@ -18,21 +18,43 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
-      address: {
+      priceId: {
+        type: Sequelize.STRING,
+        allowNull: false,
+      },
+      specialtyId: {
         type: Sequelize.STRING,
       },
-      descriptionMarkdown: {
-        type: Sequelize.TEXT,
-      },
-      descriptionHTML: {
-        type: Sequelize.TEXT,
-      },
-      name: {
+      clinicId: {
         type: Sequelize.STRING,
       },
-
-      image: {
-        type: Sequelize.BLOB("long"),
+      doctorId: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+      },
+      provinceId: {
+        type: Sequelize.STRING,
+        allowNull: false,
+      },
+      paymentId: {
+        type: Sequelize.STRING,
+        allowNull: false,
+      },
+      addressClinic: {
+        type: Sequelize.STRING,
+        allowNull: false,
+      },
+      nameClinic: {
+        type: Sequelize.STRING,
+        allowNull: false,
+      },
+      note: {
+        type: Sequelize.STRING,
+      },
+      count: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        defaultValue: 0,
       },
 
       createdAt: {
@@ -46,6 +68,6 @@ module.exports = {
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable("clinics");
+    await queryInterface.dropTable("doctorInfor");
   },
 };

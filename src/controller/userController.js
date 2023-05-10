@@ -102,22 +102,44 @@ let updateUser =  async (req,res)=> {
         
          
         return res.status(200).json(message)
-    }
+    
+}
 }
 
 let deleteUser = async (req,res) =>{
-    let id = req.query.id;
-    if (!id) {
+    let check = req.body.id;
+    if (!check) {
         return res.status(200).json({
             errCode : 1,
             message : 'missed id',
           
         })
     }
-   let message=  await userServices.handleDeleteUser(id)
+   let message=  await userServices.handleDeleteUser(check)
 
     return res.status(200).json(message)
 }
+
+
+ let getAllCodes = async (req,res)=>{
+    try {
+        
+            let gettype = req.query.type;
+            let data = await userServices.getDataAllCodes(gettype);
+            return res.status(200).json(data);
+        
+      
+    } 
+    catch (error) {
+        console.log(error);
+        return res.status(200).json({
+            errCode : -1,
+            message : 'error connect to server'
+        })
+   
+ }
+}
+
 
 module.exports = {
     handleLogin: handleLogin,
@@ -125,4 +147,6 @@ module.exports = {
     createUser : createUser,
     updateUser : updateUser,
     deleteUser : deleteUser,
+    getAllCodes: getAllCodes,
+   
 }
